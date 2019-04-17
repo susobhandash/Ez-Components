@@ -1,0 +1,20 @@
+<div class="dot-tabbar" [ngClass]="[direction === 'horizontal' ? 'dot-horizontal-tabbar' : 'dot-vertical-tabbar', styleClass ? styleClass : '']">
+  <div class="dot-tabbar-header" [ngClass]="headerStyleClass">
+    <ul class="dot-tabbar-header-container">
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.dot-active-tab-item]="tab.active" class="dot-tabbar-header-item">
+        <div>
+            <span [innerHTML]="tab.tabTitle" *ngIf="!getType(tab.tabTitle)"></span>
+            <ng-container 
+              *ngIf="getType(tab.tabTitle)"
+              [ngTemplateOutlet]="tab.tabTitle"  
+            ></ng-container>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="dot-tabbar-body" [ngClass]="bodyStyleClass" [style.maxHeight.px]="scrollHt" [style.height.px]="height">
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

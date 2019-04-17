@@ -1,0 +1,27 @@
+<!-- <ez-ng-lib></ez-ng-lib> -->
+<!-- <ez-ez-ng-lib></ez-ez-ng-lib> -->
+
+<ez-tabbar styleClass="tabbar" headerStyleClass="tabhead" bodyStyleClass="tabbody" direction="horizontal" scrollHt=150 height=120>
+    <ez-tab tabTitle="Person">
+        Content
+    </ez-tab>
+
+    <ez-tab [tabTitle]="heading1" [tabBody]="hello"></ez-tab>
+    
+    <ez-tab tabTitle="Extras">
+        <div>Hello, User</div>
+    </ez-tab>
+    
+    <ng-template #hello>
+        <div>Hello, User</div>
+    </ng-template> 
+    
+    <ng-template #heading1>
+        <span class="fa fa-user"></span> <span style="padding-left: 10px">User</span>
+    </ng-template>
+</ez-tabbar>
+
+<!-- <ez-tabbar></ez-tabbar> -->
+
+
+<router-outlet></router-outlet>

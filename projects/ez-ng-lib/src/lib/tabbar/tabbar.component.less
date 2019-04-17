@@ -1,0 +1,150 @@
+/*Tab Bar*/
+.dot-tabbar {
+    border-radius: 5px;
+    font-size: 13px;
+    overflow: hidden;
+    
+    &.dot-horizontal-tabbar {
+        padding-top: 10px;
+
+        .dot-tabbar-header {
+            text-transform: capitalize;
+    
+            .dot-tabbar-header-container {
+                margin: 0px;
+                padding: 0px 8px;
+                list-style: none;
+                display: flex;
+                position: relative;
+    
+                &::after {
+                    content: '';
+                    border-bottom: 1px solid #cfd8dc;
+                    position: absolute;
+                    width: 100%;
+                    bottom: 0px;
+                    z-index: 1;
+                    left: 0;
+                }
+    
+                .dot-tabbar-header-item {
+                    border: 1px solid #cfd8dc;
+                    border-bottom-color: transparent;
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+                    cursor: pointer;
+                    padding: 8px 16px;
+                    height: 40px;
+                    transition: all linear 0.2s;
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+                    margin: 0px 2px;
+                    background: #eceff1;
+    
+                    &:not(.dot-active-tab-item):hover {
+                        background: #0366d6;
+                        border-color: #0366d6;
+                        color: #fff;
+                    }
+    
+                    &.dot-active-tab-item {
+                        z-index: 2;
+                        position: relative;
+                        background: #fff;
+                        color: #0366d6;
+                        box-shadow: 0px -3px 4px 0px rgba(176,190,197, 0.5);
+    
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: calc(100% + 2px);
+                            height: 4px;
+                            background: #0366d6;
+                            top: -1px;
+                            left: -1px;
+                            border-top-left-radius: 5px;
+                            border-top-right-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.dot-vertical-tabbar {
+        display: flex;
+        border: 1px solid #cfd8dc;
+
+        .dot-tabbar-header {
+            text-transform: capitalize;
+            width: 200px;
+    
+            .dot-tabbar-header-container {
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+                border-right: 1px solid #cfd8dc;
+                height: 100%;
+    
+                .dot-tabbar-header-item {
+                    border-bottom: 1px solid #cfd8dc;
+                    cursor: pointer;
+                    padding: 8px 16px;
+                    height: 40px;
+                    transition: all linear 0.2s;
+                    box-sizing: border-box;
+                    display: flex;
+                    align-items: center;
+
+                    > div {
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    &:last-child {
+                        border-bottom-color: transparent;
+                    }
+                    
+                    &:nth-child(even) {
+                        background: #f7f9f9;
+                    }
+    
+                    &:not(.dot-active-tab-item):hover {
+                        background: #0366d6;
+                        color: #fff;
+                    }
+    
+                    &.dot-active-tab-item {
+                        color: #0366d6;
+                        position: relative;
+                        font-weight: 600;
+                        background: #fff !important;
+    
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            width: 4px;
+                            height: 100%;
+                            right: 0;
+                            background: #0366d6;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dot-tabbar-body {
+            width: 100%;
+        }
+    }
+
+    .dot-tabbar-body {
+        background: #fff;
+        padding: 10px;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+}

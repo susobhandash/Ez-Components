@@ -1,0 +1,8 @@
+<div *ngIf="active" class="dot-tabbar-body-item">
+  <ng-content *ngIf="!tabBody"></ng-content>
+  <ng-container
+    *ngIf="tabBody"
+    [ngTemplateOutlet]="tabBody"
+    [ngTemplateOutletContext]="{data: dataContext}"
+  ></ng-container>
+</div>
