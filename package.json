@@ -1,14 +1,14 @@
 {
   "name": "ez-lib-app",
-  "version": "0.0.1",
-  "description": "This is a simple example Angular Library published to npm.",
+  "version": "0.0.4",
+  "description": "Updated the license and readme.",
   "keywords" :["Angular","Library"],
-  "license" : "SEE LICENSE IN LICENSE",
+  "license" : "MIT",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/t-palmer/ng-example-library"
+    "url" : "https://github.com/susobhandash/Ez-Components"
   },
-  "homepage" :"https://medium.com/@palmer_todd/the-angular-library-series-publishing-ce24bb673275",
+  "homepage" :"https://eznglib.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build_lib": "ng build ez-ng-lib",
-    "copy-license": "copy .\\LICENSE .\\dist\\ez-ng-lib",
+    "copy-license": "copy .\\LICENSE.md .\\dist\\ez-ng-lib",
     "copy-readme": "copy .\\README.md .\\dist\\ez-ng-lib",
     "copy-files": "npm run copy-license && npm run copy-readme",
     "npm_pack": "cd dist/ez-ng-lib && npm pack",
