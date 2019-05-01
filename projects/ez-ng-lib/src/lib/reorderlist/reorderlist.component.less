@@ -1,0 +1,94 @@
+.ez-reorder-listbox {
+    min-width: 150px;
+    display: flex;
+
+    .ez-listbox-reorder {
+        min-width: 40px;
+        display: flex;
+        align-items: center;
+        // flex-flow: wrap;
+
+        .ez-listbox-reorder-container {
+            .ez-listbox-reorder-item {
+                display: inline-block;
+                width: 36px;
+                height: 36px;
+                border: 1px solid #b0bec5;
+                box-sizing: border-box;
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 8px;
+                cursor: not-allowed;
+                background: #eceff1;
+                font-size: 20px;
+
+                &:not([disabled]):hover,
+                &:not([disabled]):focus {
+                    background: #0366d6;
+                    color: #fff;
+                }
+
+                &:not([disabled]) {
+                    background: #fff;
+                    cursor: pointer;
+                }
+
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+    
+    .ez-reorder-listbox-container {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        border: 1px solid #b0bec5;
+        font-size: 13px;
+        width: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .ez-reorder-listbox-item {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #CFD8DC;
+            cursor: pointer;
+            padding: 4px 8px;
+            box-sizing: border-box;
+            transition: all linear 0.2s;
+
+            &.active-list-item {
+                background: #0366d6;
+                color: #fff;
+            }
+
+            &:not(.active-list-item):hover {
+                background: #D4EEFF !important;
+            }
+
+            &:nth-child(even):not(.active-list-item) {
+                background: #f7f9f9;
+            }
+            
+            &:last-child {
+                border-bottom-color: transparent;
+            }
+
+            .ez-listbox-item-icon {
+                font-size: 16px;
+                margin-right: 8px;
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                text-align: center;
+                top: -1px;
+                position: relative;
+            }
+        }
+    }
+}

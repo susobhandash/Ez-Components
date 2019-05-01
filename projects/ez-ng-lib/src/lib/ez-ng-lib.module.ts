@@ -4,12 +4,14 @@ import { EzNgLibComponent } from './ez-ng-lib.component';
 
 import { TabbarComponent } from './tabbar/tabbar.component';
 import { TabComponent } from './tab/tab.component';
+import { ListboxComponent } from './listbox/listbox.component';
+import { ReorderlistComponent } from './reorderlist/reorderlist.component';
 
 @NgModule({
-  declarations: [EzNgLibComponent, TabbarComponent, TabComponent],
+  declarations: [EzNgLibComponent, TabbarComponent, TabComponent, ListboxComponent, ReorderlistComponent],
   imports: [
     CommonModule
   ],
-  exports: [EzNgLibComponent, TabbarComponent, TabComponent]
+  exports: [EzNgLibComponent, TabbarComponent, TabComponent, ReorderlistComponent]
 })
 export class EzNgLibModule { }

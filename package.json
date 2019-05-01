@@ -1,7 +1,7 @@
 {
   "name": "ez-lib-app",
-  "version": "0.0.4",
-  "description": "Updated the license and readme.",
+  "version": "0.1.0",
+  "description": "Added Reorder List Component.",
   "keywords" :["Angular","Library"],
   "license" : "MIT",
   "repository": {
@@ -11,7 +11,7 @@
   "homepage" :"https://eznglib.com",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 2100",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

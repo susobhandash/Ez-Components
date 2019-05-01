@@ -38,5 +38,6 @@ imports: [
 #### Components
 
 - **Tabbar**
+- **Reorder List**
 
 For documentation visit [EzNgLib Website](https://eznglib.com) or at GitHub.

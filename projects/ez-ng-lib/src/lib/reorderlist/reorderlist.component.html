@@ -1,0 +1,24 @@
+<div class="ez-reorder-listbox">
+  <div class="ez-listbox-reorder">
+    <div class="ez-listbox-reorder-container">
+      <button [disabled]="activeItemId === undefined ? true : null" class="ez-listbox-reorder-item" (click)="moveArrayItems(1)">
+        <i class="fa fa-angle-double-up"></i>
+      </button>
+      <button [disabled]="activeItemId === undefined ? true : null" class="ez-listbox-reorder-item" (click)="moveArrayItems(2)">
+        <i class="fa fa-angle-up"></i>
+      </button>
+      <button [disabled]="activeItemId === undefined ? true : null" class="ez-listbox-reorder-item" (click)="moveArrayItems(3)">
+        <i class="fa fa-angle-down"></i>
+      </button>
+      <button [disabled]="activeItemId === undefined ? true : null" class="ez-listbox-reorder-item" (click)="moveArrayItems(4)">
+        <i class="fa fa-angle-double-down"></i>
+      </button>
+    </div>
+  </div>
+  <ul class="ez-reorder-listbox-container">
+    <li class="ez-reorder-listbox-item" *ngFor="let item of listData; let idx = index;" (click)="setActiveListItem(idx)" [ngClass]="{'active-list-item': idx === activeItemId}">
+      <span class="ez-listbox-item-icon" *ngIf="iconExists"><i [ngClass]=item.icon></i></span>
+      <span class="ez-listbox-item-label">{{item.label}}</span>
+    </li>
+  </ul>
+</div>

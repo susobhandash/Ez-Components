@@ -1,7 +1,7 @@
 <!-- <ez-ng-lib></ez-ng-lib> -->
 <!-- <ez-ez-ng-lib></ez-ez-ng-lib> -->
 
-<ez-tabbar styleClass="tabbar" headerStyleClass="tabhead" bodyStyleClass="tabbody" direction="horizontal" scrollHt=150 height=120>
+<!-- <ez-tabbar styleClass="tabbar" headerStyleClass="tabhead" bodyStyleClass="tabbody" direction="horizontal" scrollHt=150 height=120>
     <ez-tab tabTitle="Person">
         Content
     </ez-tab>
@@ -19,9 +19,9 @@
     <ng-template #heading1>
         <span class="fa fa-user"></span> <span style="padding-left: 10px">User</span>
     </ng-template>
-</ez-tabbar>
-
-<!-- <ez-tabbar></ez-tabbar> -->
-
+</ez-tabbar> -->
+<div style="width: 220px">
+    <ez-reorderlist [listData]="data" (onreorder)="getData($event)"></ez-reorderlist>
+</div>
 
 <router-outlet></router-outlet>
