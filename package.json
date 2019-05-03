@@ -1,7 +1,7 @@
 {
   "name": "ez-lib-app",
-  "version": "0.1.0",
-  "description": "Added Reorder List Component.",
+  "version": "0.2.2",
+  "description": "Updated List Component Style.",
   "keywords" :["Angular","Library"],
   "license" : "MIT",
   "repository": {
