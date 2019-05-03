@@ -21,7 +21,14 @@
     </ng-template>
 </ez-tabbar> -->
 <div style="width: 220px">
-    <ez-reorderlist [listData]="data" (onreorder)="getData($event)"></ez-reorderlist>
+    <ez-listbox [listData]="listData" [template]="listTmpl" styleClass="customStyleClass" selection="single" (onselection)="getSelectedItems($event)"></ez-listbox>
 </div>
-
+<ng-template #listTmpl let-hero="data">
+    <div class="template_class">
+        <i [ngClass]="hero?.icon"></i>
+        <span>
+            Hi, {{hero?.label}}. How are you ?
+        </span>
+    </div>
+</ng-template>
 <router-outlet></router-outlet>

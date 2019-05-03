@@ -1,0 +1,84 @@
+.ez-listbox {
+    min-width: 150px;
+    display: flex;
+    
+    .ez-listbox-container {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        border: 1px solid #b0bec5;
+        font-size: 13px;
+        width: 100%;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .ez-listbox-filter {
+            padding: 4px 8px;
+            display: flex;
+
+            .ez-listbox-parent-checkbox {
+                height: 32px;
+                width: 32px;
+                justify-content: center;
+                display: flex;
+                align-items: center;
+            }
+
+            .ez-listbox-filter-input {
+                width: ~"calc(100% - 36px)";
+                display: flex;
+
+                input {
+                    width: 100%;
+                    border-radius: 4px;
+                    border: 1px solid #333;
+                    padding: 4px 8px;
+
+                    &:focus {
+                        border-color: #0366d6;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .ez-listbox-item {
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #CFD8DC;
+            cursor: pointer;
+            padding: 4px 8px;
+            box-sizing: border-box;
+            transition: all linear 0.2s;
+
+            &.active-list-item {
+                background: #0366d6;
+                color: #fff;
+            }
+
+            &:not(.active-list-item):hover {
+                background: #D4EEFF !important;
+            }
+
+            &:nth-child(even):not(.active-list-item) {
+                background: #f7f9f9;
+            }
+            
+            &:last-child {
+                border-bottom-color: transparent;
+            }
+
+            .ez-listbox-item-icon {
+                font-size: 16px;
+                margin-right: 8px;
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                text-align: center;
+                top: -1px;
+                position: relative;
+            }
+        }
+    }
+}

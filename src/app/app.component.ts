@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EzListBox } from 'ez-ng-lib';
-import { ListboxComponent } from 'ez-ng-lib';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,10 @@ import { ListboxComponent } from 'ez-ng-lib';
 })
 export class AppComponent implements OnInit {
   title = 'ez-lib-app';
-  data: EzListBox[] = [];
+  listData: EzListBox[] = [];
 
   ngOnInit() {
-    this.data = [
+    this.listData = [
       {
         label: 'First',
         icon: 'fa fa-home'
@@ -42,6 +41,10 @@ export class AppComponent implements OnInit {
   }
 
   getData(event) {
+    console.log(event);
+  }
+
+  getSelectedItems(event) {
     console.log(event);
   }
 }

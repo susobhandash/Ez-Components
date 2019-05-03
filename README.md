@@ -39,5 +39,6 @@ imports: [
 
 - **Tabbar**
 - **Reorder List**
+- **Listbox**
 
 For documentation visit [EzNgLib Website](https://eznglib.com) or at GitHub.

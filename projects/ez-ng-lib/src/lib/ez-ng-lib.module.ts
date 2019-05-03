@@ -12,6 +12,6 @@ import { ReorderlistComponent } from './reorderlist/reorderlist.component';
   imports: [
     CommonModule
   ],
-  exports: [EzNgLibComponent, TabbarComponent, TabComponent, ReorderlistComponent]
+  exports: [EzNgLibComponent, TabbarComponent, TabComponent, ListboxComponent, ReorderlistComponent]
 })
 export class EzNgLibModule { }
