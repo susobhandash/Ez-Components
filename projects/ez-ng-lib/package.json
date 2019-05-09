@@ -1,8 +1,8 @@
 {
   "name": "ez-ng-lib",
-  "version": "0.2.2",
-  "description": "Updated List Component Style.",
-  "keywords" :["Angular","Library"],
+  "version": "0.3.0",
+  "description": "Added Round Progress Component.",
+  "keywords" :["Angular","Library", "UI Component", "Tabbar", "Listbox", "Reorder List", "Round Progress"],
   "license" : "MIT",
   "repository": {
     "type" : "git",

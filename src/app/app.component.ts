@@ -9,6 +9,7 @@ import { EzListBox } from 'ez-ng-lib';
 export class AppComponent implements OnInit {
   title = 'ez-lib-app';
   listData: EzListBox[] = [];
+  progress: number;
 
   ngOnInit() {
     this.listData = [
@@ -38,6 +39,10 @@ export class AppComponent implements OnInit {
         icon: 'fa fa-clock-o'
       }
     ];
+
+    this.progress = 83;
+
+    setTimeout(() => {this.progress = 55; }, 2000);
   }
 
   getData(event) {
@@ -45,6 +50,10 @@ export class AppComponent implements OnInit {
   }
 
   getSelectedItems(event) {
+    console.log(event);
+  }
+
+  clickOnSvg(event) {
     console.log(event);
   }
 }

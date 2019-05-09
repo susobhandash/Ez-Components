@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" [style.width]="(radius*2)+pathStrokeWdt+5" [style.height]="(radius*2)+pathStrokeWdt+5" (click)="clickSvg()"> 
+  <circle stroke="#ccc" fill="none" #progressBg/>
+  <path d="" id="arc" fill="none" #path style="stroke-linecap:round;"/>
+  <circle #circle/>
+  <g text-anchor="middle">
+    <text *ngIf="showText" style="font-weight:bold;" [style.fontSize]="fontSize + 'px'" #text></text>
+  </g>
+</svg>

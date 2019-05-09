@@ -1,0 +1,9 @@
+/* .dot-round-progress-bar {
+    animation: progress 1s ease-in-out;
+}
+
+@keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+} */

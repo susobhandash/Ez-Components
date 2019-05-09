@@ -12,3 +12,4 @@ export * from './lib/tabbar/tabbar.component';
 export * from './lib/tab/tab.component';
 export * from './lib/listbox/listbox.component';
 export * from './lib/reorderlist/reorderlist.component';
+export * from './lib/round-progress/round-progress.component';

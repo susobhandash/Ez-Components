@@ -20,7 +20,7 @@
         <span class="fa fa-user"></span> <span style="padding-left: 10px">User</span>
     </ng-template>
 </ez-tabbar> -->
-<div style="width: 220px">
+<!-- <div style="width: 220px">
     <ez-listbox [listData]="listData" [template]="listTmpl" styleClass="customStyleClass" selection="single" (onselection)="getSelectedItems($event)"></ez-listbox>
 </div>
 <ng-template #listTmpl let-hero="data">
@@ -30,5 +30,11 @@
             Hi, {{hero?.label}}. How are you ?
         </span>
     </div>
-</ng-template>
+</ng-template> -->
+
+<ez-round-progress [progress]="progress" progressColor="#6A1B9A" textCircleColor="#45B649" progressBgColor="#CFD8DC"
+        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff"></ez-round-progress>
+
+    <ez-round-progress [progress]="progress" progressColor="#6A1B9A" textCircleColor="#45B649" progressBgColor="#CFD8DC"
+        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff" text="Hi" (svgClick)="clickOnSvg($event)"></ez-round-progress>
 <router-outlet></router-outlet>

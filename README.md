@@ -37,8 +37,9 @@ imports: [
 
 #### Components
 
-- **Tabbar**
-- **Reorder List**
-- **Listbox**
+- [**Tabbar**](http://www.eznglib.com/#/tabbar-component)
+- [**Reorder List**](http://www.eznglib.com/#/reorder-component)
+- [**Listbox**](http://www.eznglib.com/#/listbox-component)
+- [**Round Progress**](http://www.eznglib.com/#/round-progress-component)
 
 For documentation visit [EzNgLib Website](https://eznglib.com) or at GitHub.
