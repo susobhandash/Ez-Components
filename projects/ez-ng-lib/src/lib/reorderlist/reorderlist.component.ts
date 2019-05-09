@@ -9,6 +9,7 @@ import { EzListBox } from '../component-dto';
 export class ReorderlistComponent implements OnInit {
 
   @Input() listData: EzListBox[] = [];
+  @Input() styleClass = '';
   @Output() onreorder = new EventEmitter();
 
   activeItemId: number ;

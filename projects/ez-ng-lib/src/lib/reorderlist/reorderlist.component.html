@@ -1,4 +1,4 @@
-<div class="ez-reorder-listbox">
+<div class="ez-reorder-listbox" [ngClass]="styleClass">
   <div class="ez-listbox-reorder">
     <div class="ez-listbox-reorder-container">
       <button [disabled]="activeItemId === undefined ? true : null" class="ez-listbox-reorder-item" (click)="moveArrayItems(1)">
