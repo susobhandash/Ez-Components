@@ -1,8 +1,8 @@
 {
   "name": "ez-lib-app",
-  "version": "0.3.0",
-  "description": "Added Round Progress Component.",
-  "keywords" :["Angular","Library", "UI Component", "Tabbar", "Listbox", "Reorder List", "Round Progress"],
+  "version": "0.5.3",
+  "description": "Added Animation to Round Progress.",
+  "keywords" :["Angular","Library", "UI Component", "Tabbar", "Listbox", "Reorder List", "Round Progress", "Progress Bar", "Checkbox", "Radio Button"],
   "license" : "MIT",
   "repository": {
     "type" : "git",

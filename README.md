@@ -2,6 +2,7 @@
 This is a simple example Angular Library published to npm.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/ez-ng-lib.svg)](https://badge.fury.io/js/ez-ng-lib)
 
 # Ez-Components
 
@@ -41,5 +42,8 @@ imports: [
 - [**Reorder List**](http://www.eznglib.com/#/reorder-component)
 - [**Listbox**](http://www.eznglib.com/#/listbox-component)
 - [**Round Progress**](http://www.eznglib.com/#/round-progress-component)
+- [**CheckBox**](http://www.eznglib.com/#/round-progress-component)
+- [**Radio**](http://www.eznglib.com/#/round-progress-component)
+- [**Progress Bar**](http://www.eznglib.com/#/progress-bar-component)
 
 For documentation visit [EzNgLib Website](https://eznglib.com) or at GitHub.

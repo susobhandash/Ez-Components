@@ -1,0 +1,6 @@
+<div class="ez-progress-bar" *ngIf="showProgress && progress !== 0" [style.height.px]="progressOptions.height" [style.backgroundColor]="progressOptions.progressBgColor">
+  <div class="ez-progress" [style.transitionDuration]="(progressOptions.time/1000)+'s'" [style.transitionTimingFunction]="progressOptions.timingFunc"
+    [style.backgroundColor]="progressOptions.bgColor" [style.width]="width+'%'" [ngClass]="{'ez-progress-striped': progressOptions.striped, 'ez-progress-animated': progressOptions.stripeAnimated}">
+    <span *ngIf="progressOptions.displayValue" [style.color]="progressOptions.textColor">{{shadowProgress}}</span>
+  </div>
+</div>

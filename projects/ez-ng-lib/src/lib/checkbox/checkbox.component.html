@@ -1,0 +1,7 @@
+<span class="ez-checkbox" [ngClass]="styleClass">
+  <label class="ez-checkbox-label" [ngClass]="{'ez-slide-toggle': slideToggle, 'disabled': disabled}">
+    <input type="checkbox" class="ez-checkbox-input" (change)="onChange(value)" #inputElem [(ngModel)]="value" [attr.disabled]="disabled"/>
+    <span class="ez-checkbox-placeholder"></span>
+    <span class="ez-checkbox-text">{{label}}</span>
+  </label>
+</span>

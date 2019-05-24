@@ -1,0 +1,81 @@
+.ez-radio {
+    .ez-radio-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        transition: all linear 0.2s;
+
+        &.disabled {
+            color: #78909C;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        &:hover {
+            .ez-radio-placeholder {
+                border-width: 3px;
+            }
+            .ez-radio-input:disabled + .ez-radio-placeholder {
+                border-width: 1px;
+            }
+        }
+
+        .ez-radio-input {
+            visibility: hidden;
+            height: 0px;
+            width: 0px;
+        }
+
+        .ez-radio-input {
+            &:checked + .ez-radio-placeholder {
+                background: #021B79;
+                &:hover {
+                    border-width: 1px;
+                }
+                &::before {
+                    content: '';
+                    background-color: #fff;
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%;
+                }
+            }
+
+            &:checked:disabled + .ez-radio-placeholder {
+                background: #fff;
+                border-width: 1px;
+                border-color: #78909c;
+
+                &::before {
+                    background-color: #78909C;
+                }
+
+                &:hover {
+                    border-width: 1px;
+                }
+            }
+
+            &:disabled + .ez-radio-placeholder {
+                color: #fff;
+                cursor: not-allowed;
+                pointer-events: none;
+                border-color: #ccc;
+                border-width: 4px;
+            }
+        }
+        .ez-radio-placeholder {
+            height: 16px;
+            width: 16px;
+            margin-right: 8px;
+            display: flex;
+            border: 1px solid #0366d6;
+            border-radius: 50%;
+            background: #fff;
+            position: relative;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

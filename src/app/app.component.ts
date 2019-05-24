@@ -1,48 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { EzListBox } from 'ez-ng-lib';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+// import { ProgressOptions } from 'ez-ng-lib';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'ez-lib-app';
-  listData: EzListBox[] = [];
+  listData = [];
   progress: number;
+  check = true;
+  check1 = false;
+  check2 = 'option1';
+  shadowList = [];
+  progressOptions = {};
 
   ngOnInit() {
     this.listData = [
       {
-        label: 'First',
-        icon: 'fa fa-home'
+        label: 'First'
       }, {
-        label: 'Second',
-        icon: 'fa fa-user'
+        label: 'Second'
       }, {
-        label: 'Thirds',
-        icon: 'fa fa-globe'
+        label: 'Thirds'
       }, {
-        label: 'Fourth',
-        icon: 'fa fa-clock-o'
+        label: 'Fourth'
       }, {
-        label: 'Home',
-        icon: 'fa fa-home'
+        label: 'Home'
       }, {
-        label: 'User',
-        icon: 'fa fa-user'
+        label: 'User'
       }, {
-        label: 'Globe',
-        icon: 'fa fa-globe'
+        label: 'Globe'
       }, {
-        label: 'Clock',
-        icon: 'fa fa-clock-o'
+        label: 'Clock'
       }
     ];
 
-    this.progress = 83;
+    this.progress = this.getProgress();
 
-    setTimeout(() => {this.progress = 55; }, 2000);
+    this.progressOptions = {
+      height: 20,
+      bgColor: '#007bff',
+      textColor: '#FFFFFF',
+      progressBgColor: '#D4EEFF',
+      time: 1000,
+      displayValue: true,
+      timingFunc: 'linear',
+      striped: true,
+      stripeAnimated: false
+    };
+
+    // setTimeout(() => {this.progress = 100; }, 2000);
+
+    this.listData.forEach((el) => {
+      el.icon = 'fa fa-home';
+      el.command = event => this.refreshChart(event);
+      this.shadowList.push(el);
+    });
+  }
+
+  ngAfterViewInit() {
+
   }
 
   getData(event) {
@@ -55,5 +74,19 @@ export class AppComponent implements OnInit {
 
   clickOnSvg(event) {
     console.log(event);
+  }
+
+  printData(event) {
+    console.log(event);
+    console.log(this.check);
+  }
+
+  refreshChart(evt) {
+    console.log(evt);
+  }
+
+  getProgress() {
+    this.progress = Math.floor((Math.random() * 100) + 1);
+    return this.progress;
   }
 }

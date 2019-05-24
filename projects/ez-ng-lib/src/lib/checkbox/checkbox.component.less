@@ -1,0 +1,106 @@
+.ez-checkbox {
+    .ez-checkbox-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+
+        &.disabled {
+            color: #78909C;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        &:hover {
+            color: #0366d6;
+        }
+
+        .ez-checkbox-input {
+            visibility: hidden;
+            height: 0px;
+            width: 0px;
+        }
+
+        &.ez-slide-toggle {
+            .ez-checkbox-input {
+                &:checked + .ez-checkbox-placeholder {
+                    background: #0366d6;
+                    &::before {
+                        background: #fff;
+                        border-color: #0366d6;
+                        transform: translateX(0px);
+                        left: auto;
+                    }
+                }
+    
+                &:disabled + .ez-checkbox-placeholder {
+                    background: #eceff1;
+
+                    &::before {
+                        background: #ccc;
+                    }
+                }
+            }
+
+            .ez-checkbox-placeholder {
+                height: 12px;
+                width: 30px;
+                background: #CFD8DC;
+                border-radius: 15px;
+                position: relative;
+                transition: all linear 0.3s;
+                margin-right: 8px;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 16px;
+                    width: 16px;
+                    border-radius: 50px;
+                    background: #607D8B;
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                    top: -2px;
+                    transform: translateX(-18px);
+                    right: auto;
+                    transition: all linear .3s;
+                }
+            }
+        }
+
+        &:not(.ez-slide-toggle) {
+            .ez-checkbox-input {
+                &:checked + .ez-checkbox-placeholder {
+                    background: #0366d6;
+                    &::before {
+                        content: '\2713';
+                        color: #fff;
+                        font-size: 12px;
+                        text-align: center;
+                    }
+                }
+    
+                &:disabled + .ez-checkbox-placeholder {
+                    background: #b0bec5;
+                    color: #fff;
+                    cursor: not-allowed;
+                    pointer-events: none;
+                    border-color: #ccc;
+                }
+            }
+            .ez-checkbox-placeholder {
+                height: 16px;
+                width: 16px;
+                margin-right: 8px;
+                display: flex;
+                border: 1px solid #0366d6;
+                border-radius: 2px;
+                background: #fff;
+                position: relative;
+                box-sizing: border-box;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

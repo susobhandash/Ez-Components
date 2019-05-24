@@ -1,0 +1,7 @@
+<span class="ez-radio" [ngClass]="styleClass">
+  <label class="ez-radio-label" [ngClass]="{'disabled': disabled}">
+    <input type="radio" class="ez-radio-input" name="{{name}}" (change)="onChange(value)" value="{{radioValue}}" #inputElem [(ngModel)]="value" [attr.disabled]="disabled"/>
+    <span class="ez-radio-placeholder"></span>
+    <span class="ez-radio-text">{{label}}</span>
+  </label>
+</span>

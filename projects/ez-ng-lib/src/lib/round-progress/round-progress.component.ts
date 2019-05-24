@@ -20,6 +20,7 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
   @Input() progressBgColor: string;
   @Input() textColor: string;
   @Input() text: string;
+  @Input() timingFunc: string;
   @Output() svgClick = new EventEmitter();
 
   @ViewChild('path') path;
@@ -30,12 +31,28 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
   private cx: number;
   private cy: number;
   private rad: number;
+  shadowProgress: number;
+  textToShow: string;
+  intervalVar;
+  finalPosition = 600;
+  time: any = {
+    start: performance.now()
+  };
+  animation;
+  animFunc = animFunc;
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.time.start = performance.now();
+    this.time.total = this.getTotalTime();
+    this.shadowProgress = 0;
     this.progress = Number(changes.progress.currentValue);
-    this.text = changes.text && !changes.text.firstChange && changes.text.currentValue ? changes.text.currentValue : this.text;
+    if (this.showText && !changes.text && !this.text) {
+      this.textToShow = this.progress + '%';
+    } else {
+      this.textToShow = changes.text && !changes.text.firstChange && changes.text.currentValue ? changes.text.currentValue : this.text;
+    }
     this.myArc(Math.round(this.progress * 3.6));
     this.shouldShowText();
   }
@@ -46,6 +63,7 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
     this.cx = this.radius;
     this.cy = this.radius;
     this.rad = this.radius;
+    this.shadowProgress = 0;
 
     this.fontSize = this.fontSize ? this.fontSize : 20;
     this.fontColor = this.fontColor ? this.fontColor : '#fff';
@@ -57,18 +75,19 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
     this.progressBgColor = this.progressBgColor ? this.progressBgColor : '#ccc';
     this.textColor = this.textColor ? this.textColor : '#fff';
     this.showText = this.showText ? this.showText : true;
-    this.text = this.text ? this.text : this.progress + '%';
-    this.myArc(Math.round(this.progress * 3.6));
+    this.textToShow = this.text ? this.text : this.progress + '%';
+    this.timingFunc = this.timingFunc ? this.timingFunc : 'easeOut';
   }
 
   ngAfterViewInit() {
+    this.myArc(Math.round(this.progress * 3.6));
     this.shouldShowText();
   }
 
   clickSvg() {
     this.svgClick.emit({
       progress: this.progress,
-      text: this.text
+      text: this.textToShow
     });
   }
 
@@ -79,7 +98,7 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
       // this.textElem.nativeElement.setAttribute('x', this.cx - 5);
       // this.textElem.nativeElement.setAttribute('y', this.cy + this.pathStrokeWdt);
       this.textElem.nativeElement.setAttribute('fill', this.textColor);
-      this.textElem.nativeElement.innerHTML = this.text;
+      this.textElem.nativeElement.innerHTML = this.textToShow;
     }
   }
 
@@ -103,17 +122,87 @@ export class RoundProgressComponent implements OnChanges, OnInit, AfterViewInit 
 
         let d = ' M ' + (this.cx + this.radius) + ' ' + this.cy;
 
-        d = 'M ' + (this.rad + 5) + ' ' + this.pathStrokeWdt + ' a ' + (this.rad - 10) + ' ' + (this.rad - 10) +
-        ' 0 0 1 0 ' + (this.rad * 2) + ' a ' + (this.rad - 10) + ' ' + (this.rad - 10) + ' 0 0 1 0 '  + (this.rad * -2);
         this.path.nativeElement.setAttribute('d', d);
 
-        const dashArrMax = this.rad * 2 * 3.14159;
-        const dashArrVal = this.progress * dashArrMax * 0.01;
-        const strokeDashArray = dashArrVal + ', ' + dashArrMax;
+        d = 'M ' + (this.radius + 5) + ' ' + this.pathStrokeWdt + ' a ' + (this.radius - 10) + ' ' + (this.radius - 10) +
+        ' 0 0 1 0 ' + (this.radius * 2) + ' a ' + (this.radius - 10) + ' ' + (this.radius - 10) + ' 0 0 1 0 '  + (this.radius * -2);
+        this.path.nativeElement.setAttribute('d', d);
+
+        this.animation = requestAnimationFrame(this.tick);
 
         this.path.nativeElement.setAttribute('class', 'dot-round-progress-bar');
-        this.path.nativeElement.setAttribute('stroke-dasharray', strokeDashArray);
     }
+  }
+
+  tick = now => {
+    this.time.total = this.getTotalTime();
+    this.time.elapsed = now - this.time.start;
+    const progress = Math.min(this.time.elapsed / this.time.total, 1);
+    let easing;
+    if (this.timingFunc === 'easeOut') {
+      easing = this.easeOut(progress);
+    } else if (this.timingFunc === 'easeInOut') {
+      easing = this.easeInOut(progress);
+    } else if (this.timingFunc === 'easeOutElastic') {
+      easing = this.easeOutElastic(progress);
+    }
+
+    this.shadowProgress = easing * this.progress;
+    this.PerformCalc();
+    if (progress < 1) {
+      requestAnimationFrame(this.tick);
+    }
+  }
+
+  PerformCalc() {
+    const dashArrMax = this.rad * 2 * 3.14159;
+    const dashArrVal = this.shadowProgress * dashArrMax * 0.01;
+    const strokeDashArray = dashArrVal + ', ' + dashArrMax;
+
+    this.path.nativeElement.setAttribute('stroke-dasharray', strokeDashArray);
+
+    if (this.shadowProgress >= this.progress) {
+      cancelAnimationFrame(this.animation);
+    }
+  }
+
+  easeOut(progress) {
+    return Math.pow(--progress, 5) + 1;
+  }
+
+  easeInOut(progress) {
+    return (progress * 2) < 1
+    ? .5 * Math.pow(progress, 5)
+    : .5 * ((progress -= 2) * Math.pow(progress, 4) + 2);
+  }
+
+  easeOutElastic(progress) {
+    return Math.pow(2, -10 * progress) * Math.sin((progress - .1) * 5 * Math.PI) + 1;
+  }
+
+  getTotalTime() {
+    let totalTime;
+
+    switch (this.timingFunc) {
+      case 'easeOut':
+        totalTime = this.animFunc.easeOut;
+        break;
+
+      case 'easeInOut':
+        totalTime = this.animFunc.easeInOut;
+        break;
+
+      case 'easeOutElastic':
+        totalTime = this.animFunc.easeOutElastic;
+        break;
+    }
+
+    return totalTime;
   }
 }
 
+export enum animFunc {
+  easeOut = 2000,
+  easeInOut = 2000,
+  easeOutElastic = 10000
+}

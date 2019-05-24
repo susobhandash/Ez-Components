@@ -1,0 +1,50 @@
+.ez-progress-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+
+    .ez-progress {
+        width: 0%;
+        transition: width;
+        background: rgba(3, 102, 214, 1);
+        color: #fff;
+        height: 100%;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+
+        &.ez-progress-striped {
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(45deg,rgba(255,255,255,.25) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.25) 50%,rgba(255,255,255,.25) 75%,transparent 75%,transparent);
+                background-size: 1rem 1rem;
+            }
+
+            &.ez-progress-animated {
+                &::before {
+                    animation: progress-stripe-animated 1s linear infinite;
+                }
+            }
+        }
+    }
+}
+
+@keyframes progress-stripe-animated {
+    0% {
+        background-position: 1rem 0
+    }
+    100% {
+        background-position: 0 0;
+    }
+}

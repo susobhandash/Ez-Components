@@ -1,23 +1,38 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
 import { EzListBox } from '../component-dto';
+import { RadioComponent } from '../radio/radio.component';
 
 @Component({
   selector: 'ez-reorderlist',
   templateUrl: './reorderlist.component.html',
   styleUrls: ['./reorderlist.component.less']
 })
-export class ReorderlistComponent implements OnInit {
+export class ReorderlistComponent implements OnChanges, OnInit, AfterViewInit {
 
   @Input() listData: EzListBox[] = [];
   @Input() styleClass = '';
+  @Input() template;
+  @Input() dataContext;
   @Output() onreorder = new EventEmitter();
 
-  activeItemId: number ;
+  activeItemId: string ;
   iconExists = false;
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.checkForIcon();
+  }
+
   ngOnInit() {
+    // this.checkForIcon();
+  }
+
+  ngAfterViewInit() {
+    this.checkForIcon();
+  }
+
+  checkForIcon() {
     this.listData.forEach(item => {
       if (item.icon) {
         this.iconExists = true;
@@ -26,11 +41,15 @@ export class ReorderlistComponent implements OnInit {
   }
 
   setActiveListItem(idx) {
-    this.activeItemId = idx;
+    if (idx || idx === 0) {
+      if (((idx).toString() !== this.activeItemId)) {
+        this.activeItemId = (idx).toString();
+      }
+    }
   }
 
   moveArrayItems(btnId) {
-    const from = this.listData.indexOf(this.listData.filter((el, i, a) => i === this.activeItemId)[0]);
+    const from = this.listData.indexOf(this.listData.filter((el, i, a) => i.toString() === this.activeItemId)[0]);
     let to;
 
     switch (btnId) {
@@ -50,6 +69,10 @@ export class ReorderlistComponent implements OnInit {
     this.listData.splice(to, 0, this.listData.splice(from, 1)[0]);
     this.setActiveListItem(to);
     this.onreorder.emit(this.listData);
+  }
+
+  getNum(n) {
+    return Number(n);
   }
 
 }

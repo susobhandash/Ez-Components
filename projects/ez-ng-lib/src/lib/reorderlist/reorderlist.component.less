@@ -26,7 +26,7 @@
 
                 &:not([disabled]):hover,
                 &:not([disabled]):focus {
-                    background: #0366d6;
+                    background: #0078ff;
                     color: #fff;
                 }
 
@@ -63,8 +63,12 @@
             transition: all linear 0.2s;
 
             &.active-list-item {
-                background: #0366d6;
+                background: #0078ff;
                 color: #fff;
+
+                .ez-radio-placeholder {
+                    border-color: #fff !important;
+                }
             }
 
             &:not(.active-list-item):hover {

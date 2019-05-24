@@ -16,9 +16,21 @@
     </div>
   </div>
   <ul class="ez-reorder-listbox-container">
-    <li class="ez-reorder-listbox-item" *ngFor="let item of listData; let idx = index;" (click)="setActiveListItem(idx)" [ngClass]="{'active-list-item': idx === activeItemId}">
-      <span class="ez-listbox-item-icon" *ngIf="iconExists"><i [ngClass]=item.icon></i></span>
-      <span class="ez-listbox-item-label">{{item.label}}</span>
-    </li>
+    <ng-container *ngIf="!template">
+      <li class="ez-reorder-listbox-item" *ngFor="let item of listData; let idx = index;" (click)="setActiveListItem(idx)" [ngClass]="{'active-list-item': idx === getNum(activeItemId)}">
+        <span class="ez-listbox-item-icon" *ngIf="iconExists"><i [ngClass]=item.icon></i></span>
+        <span class="ez-listbox-item-label">{{item.label}}</span>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="template">
+      <li class="ez-reorder-listbox-item" *ngFor="let item of listData; let idx = index;" [ngClass]="{'active-list-item': idx === getNum(activeItemId)}">
+        <!-- <input type="radio" name="selectItem" (onChange)="setActiveListItem(idx, $event)"/> -->
+        <ez-radio name="ez-radio" [(ngModel)]="activeItemId" radioValue="{{idx}}" (onchange)="setActiveListItem($event)"></ez-radio>
+        <ng-container
+          [ngTemplateOutlet]="template"
+          [ngTemplateOutletContext]="{data: item}"
+        ></ng-container>
+      </li>
+    </ng-container>
   </ul>
 </div>

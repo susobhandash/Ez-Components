@@ -1,6 +1,8 @@
 <!-- <ez-ng-lib></ez-ng-lib> -->
 <!-- <ez-ez-ng-lib></ez-ez-ng-lib> -->
 
+<!-- Tabbar -->
+
 <!-- <ez-tabbar styleClass="tabbar" headerStyleClass="tabhead" bodyStyleClass="tabbody" direction="horizontal" scrollHt=150 height=120>
     <ez-tab tabTitle="Person">
         Content
@@ -32,9 +34,73 @@
     </div>
 </ng-template> -->
 
-<ez-round-progress [progress]="progress" progressColor="#6A1B9A" textCircleColor="#45B649" progressBgColor="#CFD8DC"
-        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff"></ez-round-progress>
+
+
+
+
+
+
+
+
+<!-- Reorder List -->
+
+<ez-reorderlist [listData]="shadowList" (onreorder)="getData($event)"></ez-reorderlist>
+
+<!-- <ez-reorderlist [listData]="shadowList" [template]="listTmpl" (onreorder)="getData($event)"></ez-reorderlist>
+<ng-template #listTmpl let-hero="data">
+    <div class="">
+        <i [ngClass]="hero?.icon"></i>
+        <span>
+            Hi, {{hero?.label}}. How are you ?
+        </span>
+        <span>
+            <button (click)="hero.command($event)">Hi</button>
+        </span>
+    </div>
+</ng-template> -->
+
+
+
+
+<!-- Round Progress -->
+
+<!-- <ez-round-progress [progress]="progress" progressColor="#6A1B9A" textCircleColor="#45B649" progressBgColor="#CFD8DC"
+        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff" timingFunc="easeOutElastic"></ez-round-progress>
 
     <ez-round-progress [progress]="progress" progressColor="#6A1B9A" textCircleColor="#45B649" progressBgColor="#CFD8DC"
-        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff" text="Hi" (svgClick)="clickOnSvg($event)"></ez-round-progress>
+        [showText]=true [radius]=60 [fontSize]=18 [progressStrokeWdt]=2 [pathStrokeWdt]=5 [innerCircleRad]=45 textColor="#fff" text="Hi" timingFunc="easeOut" (svgClick)="clickOnSvg($event)"></ez-round-progress> -->
+
+
+
+
+<!-- Checkbox -->
+
+<!-- {{check2}}
+<ez-checkbox label="Some Text" [(ngModel)]="check" (onchange)="clickOnSvg($event)"></ez-checkbox> -->
+
+
+
+<!-- Radio -->
+
+<!-- <ez-radio label="Some Text" name="ez-radio" [(ngModel)]="check2" (onchange)="clickOnSvg($event)" radioValue="option1" disabled=true></ez-radio>
+<ez-radio label="Some Text" name="ez-radio" [(ngModel)]="check2" (onchange)="clickOnSvg($event)" radioValue="option2"></ez-radio>
+<ez-radio label="Some Text" name="ez-radio" [(ngModel)]="check2" (onchange)="clickOnSvg($event)" radioValue="option3"></ez-radio> -->
+
+
+
+<!-- Progress Bar -->
+
+<!-- <button (click)="getProgress()">Try</button>
+<input type="number" [(ngModel)]="progress" />
+{{progress}} -->
+<!-- <div><ez-progress-bar [progress]=progress [progressOptions]="progressOptions" ></ez-progress-bar></div>
+<hr/>
+<input type="number" [(ngModel)]="progress"/>
+<input type="number" [(ngModel)]="progressOptions.height"/>
+<input type="color" [(ngModel)]="progressOptions.bgColor"/>
+<input type="color" [(ngModel)]="progressOptions.textColor"/>
+<input type="color" [(ngModel)]="progressOptions.progressBgColor"/>
+<input type="number" [(ngModel)]="progressOptions.time"/>
+<ez-checkbox [(ngModel)]="progressOptions.displayValue"></ez-checkbox>
+<input type="text" [(ngModel)]="progressOptions.timingFunc"/> -->
 <router-outlet></router-outlet>
